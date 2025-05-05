@@ -12,8 +12,10 @@ const router = createBrowserRouter([
     path: "/",
     element: <MainLayout />,
     children: [
-      { index: true, element: <Home /> },
+      { index: true, element: <Home /> },           // Homepage with Carousel
       { path: "bills", element: <Bills /> },
+      { path: "bills/:id", element: <BillDetails /> },
+    
       { path: "profile", element: <Profile /> }
     ],
   },
@@ -27,7 +29,7 @@ const router = createBrowserRouter([
   },
   {
     path: "*",
-    element: <h1>Error 404 - Page not found</h1>
+    element: <h1 className="text-center text-3xl text-red-600 mt-10">Error 404 - Page not found</h1>
   }
 ]);
 

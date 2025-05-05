@@ -1,26 +1,35 @@
 import React, { useEffect, useState } from "react";
-import toast from 'react-hot-toast';
-import Electricity from '../assets/electricity.png';
-import Gas from '../assets/gas.png';
-import Water from '../assets/wasa.jpg';
-import Internet from '../assets/internet.jpg';
-import Telephone from '../assets/telephone.png';
+import { useNavigate } from "react-router-dom";
+import toast from "react-hot-toast";
+
+import Electricity from "../assets/electricity.png";
+import Gas from "../assets/gas.png";
+import Water from "../assets/wasa.jpg";
+import Internet from "../assets/internet.jpg";
+import Telephone from "../assets/telephone.png";
 
 const getBillIcon = (type) => {
   switch (type.toLowerCase()) {
-    case 'electricity': return Electricity;
-    case 'gas': return Gas;
-    case 'water': return Water;
-    case 'internet': return Internet;
-    case 'telephone': return Telephone;
-    default: return Electricity;
+    case "electricity":
+      return Electricity;
+    case "gas":
+      return Gas;
+    case "water":
+      return Water;
+    case "internet":
+      return Internet;
+    case "telephone":
+      return Telephone;
+    default:
+      return Electricity;
   }
 };
 
 const Bills = () => {
   const [bills, setBills] = useState([]);
   const [paidBills, setPaidBills] = useState([]);
-  const [balance, setBalance] = useState(10000); // Initial balance
+  const [balance, setBalance] = useState(10000);
+  const navigate = useNavigate(); // for navigation
 
   useEffect(() => {
     fetch("/client-data.json")
@@ -30,7 +39,7 @@ const Bills = () => {
   }, []);
 
   const handlePay = (id) => {
-    const bill = bills.find(b => b.id === id);
+    const bill = bills.find((b) => b.id === id);
     if (!bill || paidBills.includes(id)) return;
 
     if (balance < bill.amount) {
@@ -39,7 +48,7 @@ const Bills = () => {
     }
 
     setPaidBills([...paidBills, id]);
-    setBalance(prev => prev - bill.amount);
+    setBalance((prev) => prev - bill.amount);
     toast.success(`${bill.bill_type.toUpperCase()} bill of ${bill.amount} BDT paid successfully`);
   };
 
@@ -53,9 +62,14 @@ const Bills = () => {
         {bills.map((bill) => (
           <div
             key={bill.id}
-            className="card bg-white shadow p-4 flex items-center justify-between">
+            className="card bg-white shadow p-4 flex items-center justify-between"
+          >
             <div className="flex items-center gap-4">
-              <img src={getBillIcon(bill.bill_type)} alt={bill.bill_type} className="w-12 h-12" />
+              <img
+                src={getBillIcon(bill.bill_type)}
+                alt={bill.bill_type}
+                className="w-12 h-12"
+              />
               <div>
                 <p className="font-bold capitalize">{bill.bill_type}</p>
                 <p className="text-sm text-gray-600">{bill.organization}</p>
@@ -67,13 +81,18 @@ const Bills = () => {
             <div className="text-right">
               <p className="text-lg font-bold">{bill.amount} BDT</p>
               <button
-                className={`btn btn-sm mt-2 ${
-                  paidBills.includes(bill.id)
-                    ? "btn-disabled"
-                    : "btn-primary"
+                className={`btn btn-sm mt-2 mr-2 ${
+                  paidBills.includes(bill.id) ? "btn-disabled" : "btn-primary"
                 }`}
-                onClick={() => handlePay(bill.id)}>
+                onClick={() => handlePay(bill.id)}
+              >
                 {paidBills.includes(bill.id) ? "Paid" : "Pay"}
+              </button>
+              <button
+                className="btn btn-sm btn-outline mt-2"
+                onClick={() => navigate(`/bills/${bill.id}`)}
+              >
+                View Details
               </button>
             </div>
           </div>
