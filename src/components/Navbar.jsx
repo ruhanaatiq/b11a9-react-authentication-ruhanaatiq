@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link, NavLink } from 'react-router-dom';
+import logo from '../assets/banklogo.png';
 
 const Navbar = () => {
   const isLoggedIn = true; // Replace with actual auth logic
@@ -19,16 +20,19 @@ const Navbar = () => {
   return (
     <div className="navbar bg-base-100 shadow-sm px-4">
       {/* Left - Logo */}
-      <div className="flex-1">
-        <Link to="/" className="btn btn-ghost text-xl">Elite Finance Corporation</Link>
+      <div className="flex-1 flex items-center gap-2">
+        <Link to="/">
+          <img src={logo} alt="Logo" className="h-10 w-10" />
+        </Link>
+        <Link to="/" className="btn btn-ghost text-xl normal-case">Elite Finance Corporation</Link>
       </div>
 
-      {/* Center - Links */}
+      {/* Center - Navigation Links */}
       <div className="hidden md:flex gap-2">
         {navLinks}
       </div>
 
-      {/* Right - Auth/Avatar */}
+      {/* Right - Avatar / Auth Buttons */}
       <div className="flex-none gap-2">
         {!isLoggedIn ? (
           <>
@@ -51,7 +55,9 @@ const Navbar = () => {
               <li>
                 <a className="text-sm text-gray-600">Balance: {user.balance} BDT</a>
               </li>
-              <li><a className="text-red-500">Log Out</a></li>
+              <li>
+                <button className="text-red-500">Log Out</button>
+              </li>
             </ul>
           </div>
         )}

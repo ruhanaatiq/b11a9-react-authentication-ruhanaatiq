@@ -5,16 +5,17 @@ import Login from "../pages/Login";
 import Register from "../pages/Register";
 import Bills from "../pages/Bills";
 import BillDetails from "../pages/BillDetails";
-import MyProfile from "../pages/MyProfile";
+import Profile from "../pages/MyProfile";
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <MainLayout />, // 👈 Correct: JSX element, not 'Component:'
+    element: <MainLayout />,
     children: [
-      { path: "/", element: <Home /> },
-    
-    ]
+      { index: true, element: <Home /> },
+      { path: "bills", element: <Bills /> },
+      { path: "profile", element: <Profile /> }
+    ],
   },
   {
     path: "/login",
@@ -26,7 +27,7 @@ const router = createBrowserRouter([
   },
   {
     path: "*",
-    element: <h1>Error 404 - Page Not Found</h1>
+    element: <h1>Error 404 - Page not found</h1>
   }
 ]);
 
