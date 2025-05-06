@@ -5,7 +5,8 @@ import Login from "../pages/Login";
 import Register from "../pages/Register";
 import Bills from "../pages/Bills";
 import BillDetails from "../pages/BillDetails";
-import Profile from "../pages/MyProfile";
+import MyProfile from "../pages/MyProfile";
+import UpdateProfile from "../pages/UpdateProfile";
 
 const router = createBrowserRouter([
   {
@@ -16,7 +17,8 @@ const router = createBrowserRouter([
       { path: "bills", element: <Bills /> },
       { path: "bills/:id", element: <BillDetails /> },
     
-      { path: "profile", element: <Profile /> }
+      { path: "profile", element: <MyProfile /> },
+      { path: "update-profile", element: <UpdateProfile /> }
     ],
   },
   {
