@@ -14,7 +14,7 @@ const Navbar = () => {
   );
 
   return (
-    <div className="navbar bg-base-100 shadow-sm px-4">
+    <div className="navbar bg-amber-200 shadow-sm px-4">
       {/* Left - Logo */}
       <div className="flex-1 flex items-center gap-2">
         <Link to="/">
@@ -32,8 +32,8 @@ const Navbar = () => {
       <div className="flex-none gap-2">
         {!user ? (
           <>
-            <Link to="/login" className="btn btn-sm">Login</Link>
-            <Link to="/register" className="btn btn-sm btn-outline">Register</Link>
+            <Link to="/login" className="btn btn-sm text-amber-50 bg-blue-400">Login</Link><span></span>
+            <Link to="/register" className="btn btn-sm text-blue-400 btn-outline">Register</Link>
           </>
         ) : (
           <div className="dropdown dropdown-end">

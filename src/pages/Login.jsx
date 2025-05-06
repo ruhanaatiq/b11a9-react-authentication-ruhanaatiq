@@ -9,6 +9,7 @@ const Login = () => {
   const [error, setError] = useState('');
   const navigate = useNavigate();
   const location = useLocation();
+
   const from = location.state?.from?.pathname || '/';
 
   const handleLogin = e => {
@@ -18,7 +19,7 @@ const Login = () => {
     const password = form.password.value;
 
     signIn(email, password)
-      .then(result => {
+      .then(() => {
         toast.success('Logged in successfully!');
         navigate(from, { replace: true });
       })
@@ -42,8 +43,20 @@ const Login = () => {
       <div className="w-full max-w-md p-8 space-y-4 bg-white rounded shadow">
         <h2 className="text-2xl font-semibold text-center">User Login</h2>
         <form onSubmit={handleLogin} className="space-y-4">
-          <input name="email" type="email" placeholder="Email" className="input input-bordered w-full" required />
-          <input name="password" type="password" placeholder="Password" className="input input-bordered w-full" required />
+          <input
+            name="email"
+            type="email"
+            placeholder="Email"
+            className="input input-bordered w-full"
+            required
+          />
+          <input
+            name="password"
+            type="password"
+            placeholder="Password"
+            className="input input-bordered w-full"
+            required
+          />
           {error && <p className="text-red-500">{error}</p>}
           <div className="text-right">
             <Link to="#" className="text-sm link">Forgot Password?</Link>
@@ -55,7 +68,10 @@ const Login = () => {
             New here? <Link to="/register" className="link">Register</Link>
           </p>
         </div>
-        <button onClick={handleGoogleLogin} className="btn btn-outline w-full flex gap-2 items-center justify-center">
+        <button
+          onClick={handleGoogleLogin}
+          className="btn btn-outline w-full flex gap-2 items-center justify-center"
+        >
           <FcGoogle className="text-xl" /> Continue with Google
         </button>
       </div>
