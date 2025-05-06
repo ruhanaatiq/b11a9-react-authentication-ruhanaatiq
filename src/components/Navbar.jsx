@@ -1,14 +1,10 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import logo from '../assets/banklogo.png';
+import { AuthContext } from '../providers/AuthProvider';
 
 const Navbar = () => {
-  const isLoggedIn = true; // Replace with actual auth logic
-  const user = {
-    displayName: "John Doe",
-    photoURL: "https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp",
-    balance: 10000
-  };
+  const { user, logOut } = useContext(AuthContext);
 
   const navLinks = (
     <>
@@ -34,7 +30,7 @@ const Navbar = () => {
 
       {/* Right - Avatar / Auth Buttons */}
       <div className="flex-none gap-2">
-        {!isLoggedIn ? (
+        {!user ? (
           <>
             <Link to="/login" className="btn btn-sm">Login</Link>
             <Link to="/register" className="btn btn-sm btn-outline">Register</Link>
@@ -53,10 +49,7 @@ const Navbar = () => {
                 <a className="text-base font-medium">{user.displayName}</a>
               </li>
               <li>
-                <a className="text-sm text-gray-600">Balance: {user.balance} BDT</a>
-              </li>
-              <li>
-                <button className="text-red-500">Log Out</button>
+                <button onClick={logOut} className="text-red-500">Log Out</button>
               </li>
             </ul>
           </div>

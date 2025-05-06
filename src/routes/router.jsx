@@ -30,6 +30,22 @@ const router = createBrowserRouter([
   {
     path: "*",
     element: <h1 className="text-center text-3xl text-red-600 mt-10">Error 404 - Page not found</h1>
+  },
+
+  {
+    path:"/auth",
+    element : <h1>Authentication</h1>,
+    children:[
+      {
+        path: "/auth/login",
+        element:<Login></Login>
+      },
+      {
+        path: "/auth/register",
+        element:<Register></Register>
+      },
+    ]
+    
   }
 ]);
 
