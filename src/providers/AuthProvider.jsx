@@ -8,7 +8,7 @@ import {
   signOut,
   onAuthStateChanged
 } from 'firebase/auth';
-import app from '../firebase/firebase.config'; // Your Firebase config
+import app from '../firebase/firebase.config'; 
 
 export const AuthContext = createContext(null);
 
@@ -43,7 +43,7 @@ const AuthProvider = ({ children }) => {
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, currentUser => {
       setUser(currentUser);
-      setLoading(false); // ✅ stop loading after auth state is resolved
+      setLoading(false); 
     });
     return () => unsubscribe();
   }, []);

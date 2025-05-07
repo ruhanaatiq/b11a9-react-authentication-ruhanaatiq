@@ -12,30 +12,30 @@ const Login = () => {
 
   const from = location.state?.from?.pathname || '/';
 
-  const handleLogin = e => {
+  const handleLogin = async (e) => {
     e.preventDefault();
     const form = e.target;
     const email = form.email.value;
     const password = form.password.value;
 
-    signIn(email, password)
-      .then(() => {
-        toast.success('Logged in successfully!');
-        navigate(from, { replace: true });
-      })
-      .catch(err => {
-        setError(err.message);
-        toast.error('Login failed');
-      });
+    try {
+      await signIn(email, password);
+      toast.success('Logged in successfully!');
+      navigate(from, { replace: true });
+    } catch (err) {
+      setError(err.message);
+      toast.error('Login failed');
+    }
   };
 
-  const handleGoogleLogin = () => {
-    googleSignIn()
-      .then(() => {
-        toast.success('Logged in with Google!');
-        navigate(from, { replace: true });
-      })
-      .catch(err => toast.error(err.message));
+  const handleGoogleLogin = async () => {
+    try {
+      await googleSignIn();
+      toast.success('Logged in with Google!');
+      navigate(from, { replace: true });
+    } catch (err) {
+      toast.error(err.message);
+    }
   };
 
   return (

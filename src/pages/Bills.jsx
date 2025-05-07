@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
-
+import { AuthContext } from "../providers/AuthProvider";
 import Electricity from "../assets/electricity.png";
 import Gas from "../assets/gas.png";
 import Water from "../assets/wasa.jpg";
@@ -29,7 +29,8 @@ const Bills = () => {
   const [bills, setBills] = useState([]);
   const [paidBills, setPaidBills] = useState([]);
   const [balance, setBalance] = useState(10000);
-  const navigate = useNavigate(); // for navigation
+  const { user } = useContext(AuthContext);
+  const navigate = useNavigate();
 
   useEffect(() => {
     fetch("/client-data.json")
@@ -39,6 +40,12 @@ const Bills = () => {
   }, []);
 
   const handlePay = (id) => {
+    if (!user) {
+      toast.error("Please log in to pay your bills.");
+      navigate("/login", { state: { from: "/bills" } });
+      return;
+    }
+
     const bill = bills.find((b) => b.id === id);
     if (!bill || paidBills.includes(id)) return;
 
@@ -74,7 +81,7 @@ const Bills = () => {
                 <p className="font-bold capitalize">{bill.bill_type}</p>
                 <p className="text-sm text-gray-600">{bill.organization}</p>
                 <p className="text-sm text-gray-500">
-                  Due: {new Date(bill["due-date"]).toLocaleDateString()}
+                  Due: {new Date(bill.due_date).toLocaleDateString()}
                 </p>
               </div>
             </div>

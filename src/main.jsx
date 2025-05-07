@@ -7,7 +7,7 @@ import { UserContext } from './context/UserContext';
 import AuthProvider from './providers/AuthProvider.jsx';
 
 const Main = () => {
-  const [balance, setBalance] = useState(10000); // initialize balance
+  const [balance, setBalance] = useState(10000); 
 
   return (
     <StrictMode>
