@@ -1,16 +1,23 @@
-import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
-import './index.css'
-import App from './App.jsx'
-import { RouterProvider } from 'react-router'
-import router from './routes/router.jsx'
-import { UserProvider } from './context/UserContext';
-import AuthProvider from './providers/AuthProvider.jsx'
+import { StrictMode, useState } from 'react';
+import { createRoot } from 'react-dom/client';
+import './index.css';
+import { RouterProvider } from 'react-router-dom'; 
+import router from './routes/router.jsx';
+import { UserContext } from './context/UserContext';
+import AuthProvider from './providers/AuthProvider.jsx';
 
-createRoot(document.getElementById('root')).render(
-  <StrictMode>
-    <AuthProvider>
-   <RouterProvider router={router}></RouterProvider>
-   </AuthProvider>
-  </StrictMode>,
-)
+const Main = () => {
+  const [balance, setBalance] = useState(10000); // initialize balance
+
+  return (
+    <StrictMode>
+      <AuthProvider>
+        <UserContext.Provider value={{ balance, setBalance }}>
+          <RouterProvider router={router} />
+        </UserContext.Provider>
+      </AuthProvider>
+    </StrictMode>
+  );
+};
+
+createRoot(document.getElementById('root')).render(<Main />);
