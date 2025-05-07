@@ -63,9 +63,12 @@ const BillDetails = () => {
         <p className="text-lg capitalize">Type: {bill.bill_type}</p>
         <p className="text-lg">Amount: {bill.amount} BDT</p>
         <p className="text-gray-600">
-          Due Date: {new Date(bill["due-date"]).toLocaleDateString()}
-        </p>
-
+  Due Date: {new Date(bill["due-date"]).toLocaleDateString('en-US', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+  })}
+</p>
         <button
           className={`btn ${paid ? "btn-disabled" : "btn-success"} mt-4`}
           onClick={handlePay}>
