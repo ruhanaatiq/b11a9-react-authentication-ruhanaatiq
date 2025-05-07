@@ -2,7 +2,7 @@
     {
       "id": 1,
       "bill_type": "electricity",
-      "icon": "https://icon-to-indicate-electricity-bill",
+      "icon": "https://i.postimg.cc/qMJXzpHN/1.jpg",
       "organization": "DESCO",
       "amount": 1890,
       "due-date": "2025-03-22T06:57:58.110Z"
@@ -10,7 +10,7 @@
     {
       "id": 2,
       "bill_type": "gas",
-      "icon": "https://icon-to-indicate-gas-bill",
+      "icon": "https://i.postimg.cc/j5v290g1/2.jpg",
       "organization": "Tista",
       "amount": 1488,
       "due-date": "2025-03-28T06:57:58.110Z"
@@ -18,7 +18,7 @@
     {
       "id": 3,
       "bill_type": "water",
-      "icon": "https://icon-to-indicate-water-bill",
+      "icon": "https://i.postimg.cc/0NsNy2h3/water.jpg",
       "organization": "WASA",
       "amount": 950,
       "due-date": "2025-04-05T06:57:58.110Z"
@@ -26,7 +26,7 @@
     {
       "id": 4,
       "bill_type": "internet",
-      "icon": "https://icon-to-indicate-internet-bill",
+      "icon": "https://i.postimg.cc/4yqfkJzW/internet.jpg",
       "organization": "Link3",
       "amount": 1200,
       "due-date": "2025-04-10T06:57:58.110Z"
@@ -34,7 +34,7 @@
     {
       "id": 5,
       "bill_type": "telephone",
-      "icon": "https://icon-to-indicate-telephone-bill",
+      "icon": "https://i.postimg.cc/CxyhcxM1/telephone.png",
       "organization": "BTCL",
       "amount": 560,
       "due-date": "2025-04-15T06:57:58.110Z"
@@ -42,7 +42,7 @@
     {
       "id": 6,
       "bill_type": "electricity",
-      "icon": "https://icon-to-indicate-electricity-bill",
+      "icon": "https://i.postimg.cc/qMJXzpHN/1.jpg",
       "organization": "PDB",
       "amount": 2025,
       "due-date": "2025-04-20T06:57:58.110Z"
@@ -50,7 +50,7 @@
     {
       "id": 7,
       "bill_type": "gas",
-      "icon": "https://icon-to-indicate-gas-bill",
+      "icon": "https://i.postimg.cc/j5v290g1/2.jpg",
       "organization": "United",
       "amount": 1330,
       "due-date": "2025-04-25T06:57:58.110Z"
@@ -58,7 +58,7 @@
     {
       "id": 8,
       "bill_type": "internet",
-      "icon": "https://icon-to-indicate-internet-bill",
+      "icon": "https://i.postimg.cc/4yqfkJzW/internet.jpg",
       "organization": "BDCOM",
       "amount": 1600,
       "due-date": "2025-04-30T06:57:58.110Z"
