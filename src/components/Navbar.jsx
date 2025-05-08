@@ -3,7 +3,6 @@ import { Link, NavLink } from 'react-router-dom';
 import logo from '../assets/banklogo.png';
 import { AuthContext } from '../providers/AuthProvider';
 import { UserContext } from '../context/UserContext';
-
 const Navbar = () => {
   const { user, logOut } = useContext(AuthContext);
   const { balance } = useContext(UserContext);
@@ -64,6 +63,7 @@ const Navbar = () => {
         )}
       </div>
     </div>
+    
   );
 };
 

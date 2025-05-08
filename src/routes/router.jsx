@@ -9,6 +9,7 @@ import MyProfile from "../pages/MyProfile";
 import UpdateProfile from "../pages/UpdateProfile";
 import PrivateRoute from "../routes/PrivateRoute";
 
+
 const router = createBrowserRouter([
   {
     path: "/",
@@ -17,6 +18,7 @@ const router = createBrowserRouter([
       { index: true, element: <Home /> },
       { path: "bills", element: <Bills /> },
       { path: "bills/:id", element: <PrivateRoute><BillDetails /></PrivateRoute> },
+    
       {
         path: "profile",
         element: (

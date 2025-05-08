@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-
+import Marquee from "react-fast-marquee";
 const Carousel = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const slides = [
@@ -38,6 +38,11 @@ const Carousel = () => {
   };
 
   return (
+    <div className="mt-4">
+       <Marquee className="bg-amber-500 text-white font-medium py-2">
+        ⚡ Get 10% Cashback on Internet Bills! | 💧 Free Month on 3-Month Gas Prepayment | 📶 Stay Connected with Easy Bill Payments
+      </Marquee>
+    
     <div className="relative w-full overflow-hidden">
       <div
         className="carousel-inner flex transition-all duration-500"
@@ -84,6 +89,7 @@ const Carousel = () => {
             onClick={() => setCurrentIndex(index)}
           ></button>
         ))}
+        </div>
       </div>
     </div>
   );
